@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Analiza_temperatury_Projekt_
@@ -28,7 +23,6 @@ namespace Analiza_temperatury_Projekt_
 
             else
             {
-                
                 ReadData(dane);
             }
         }
@@ -37,9 +31,9 @@ namespace Analiza_temperatury_Projekt_
 
         public void ReadData(List<double> dane)
         {
+            dane.Clear();
             var lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
-
-            //List<double> dane = new List<double> { };
+            
 
             for (int i = 0; i < lines.Length; i++)
             {
@@ -48,19 +42,29 @@ namespace Analiza_temperatury_Projekt_
                 double.TryParse(line, out liczba);
                 if (liczba > 0 || liczba < 0) dane.Add(liczba);
             }
-
-            if (dane.Any())
-            {
-                openChart.Enabled = true;
-            }
-
-
-            textBox1.Text = System.IO.File.ReadAllText(openFileDialog1.FileName);
-            max.Text = dane[1].ToString();
-            min.Text = dane.Min().ToString();
-            avg.Text = (dane.Sum() / dane.Count).ToString();
-            vari.Text = "null";
             this.dane = dane;
+
+
+            try
+            {
+                if (dane.Any())
+                {
+                    openChart.Enabled = true;
+                    zapisz.Enabled = true;
+                }
+
+                textBox1.Text = System.IO.File.ReadAllText(openFileDialog1.FileName);
+                max.Text = dane.Max().ToString();
+                min.Text = dane.Min().ToString();
+                avg.Text = (dane.Sum() / dane.Count).ToString();
+                vari.Text = Wariancja().ToString();
+                
+            }
+            catch (Exception)
+            {
+                textBox1.Text = " ";
+                MessageBox.Show("Wybierz plik który zawiera próbki z pomiarami", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);              
+            }
         }
 
         private void openChart_Click(object sender, EventArgs e)
@@ -79,6 +83,49 @@ namespace Analiza_temperatury_Projekt_
             {
                 e.Cancel = true;
             }
+        }
+
+        private void zapisz_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            if (saveFileDialog1.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("Plik nie został zapisany", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            else
+            {
+
+                List<string> zapisz = new List<string> { };
+                
+                zapisz.Add("Wartość maksymalna: " + max.Text);
+                zapisz.Add("Wartość minimalna: " + min.Text);
+                zapisz.Add("Wartość średnia: " + avg.Text);
+                zapisz.Add("Wariancja: " + Wariancja().ToString());
+
+                try
+                {
+                    System.IO.File.AppendAllLines(saveFileDialog1.FileName,zapisz);
+                    MessageBox.Show("Zapisano pomyślnie", "Zapisano", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                }
+
+                catch (Exception)
+                {
+                    MessageBox.Show("Error", "Error", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private double Wariancja()
+        {
+            double wariancja = 0;
+            double avg = dane.Sum() / dane.Count();
+
+            for(int i = 0; i < dane.Count(); i++)
+                wariancja += Math.Pow(dane[i] - avg,2);
+            wariancja /= dane.Count();
+
+            return wariancja;
         }
     }
 }
