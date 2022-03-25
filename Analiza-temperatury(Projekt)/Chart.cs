@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -106,32 +102,35 @@ namespace Analiza_temperatury_Projekt_
         {
             area = wykres.ChartAreas[0];
 
-            if (kolor1.SelectedIndex == 0)
+            switch (kolor1.SelectedIndex)
             {
-                s1.Color = Color.Red;
-                area.Axes[0].LineColor = Color.Red;
-                area.Axes[1].LineColor = Color.Red;
-            }
-                
-            else if (kolor1.SelectedIndex == 1)
-            {
-                s1.Color = Color.Green;
-                area.Axes[0].LineColor = Color.Green;
-                area.Axes[1].LineColor = Color.Green;
-            }
-                
-            else if (kolor1.SelectedIndex == 2)
-            {
-                s1.Color = Color.Blue;
-                area.Axes[0].LineColor = Color.Blue;
-                area.Axes[1].LineColor = Color.Blue;
-            }
-                
-            else
-            {
-                s1.Color = Color.Yellow;
-                area.Axes[0].LineColor = Color.Yellow;
-                area.Axes[1].LineColor = Color.Yellow;
+                case 0:
+                    s1.Color = Color.Red;
+                    area.Axes[0].LineColor = Color.Red;
+                    area.Axes[1].LineColor = Color.Red;
+                    break;
+
+                case 1:
+                    s1.Color = Color.Green;
+                    area.Axes[0].LineColor = Color.Green;
+                    area.Axes[1].LineColor = Color.Green;
+                    break;
+
+                case 2:
+                    s1.Color = Color.Blue;
+                    area.Axes[0].LineColor = Color.Blue;
+                    area.Axes[1].LineColor = Color.Blue;
+                    break;
+
+                case 3:
+                    s1.Color = Color.Yellow;
+                    area.Axes[0].LineColor = Color.Yellow;
+                    area.Axes[1].LineColor = Color.Yellow;
+                    break;
+
+                default:
+                    break;
+                    
             }
                
         }
@@ -140,32 +139,35 @@ namespace Analiza_temperatury_Projekt_
         {
             area = wykres.ChartAreas[0];
 
-            if (kolor2.SelectedIndex == 0)
+            switch (kolor2.SelectedIndex)
             {
-                s2.Color = Color.Red;
-                area.Axes[2].LineColor = Color.Red;
-                area.Axes[3].LineColor = Color.Red;
-            }
+                case 0:
+                    s2.Color = Color.Red;
+                    area.Axes[2].LineColor = Color.Red;
+                    area.Axes[3].LineColor = Color.Red;
+                    break;
 
-            else if (kolor2.SelectedIndex == 1)
-            {
-                s2.Color = Color.Green;
-                area.Axes[2].LineColor = Color.Green;
-                area.Axes[3].LineColor = Color.Green;
-            }
+                case 1:
+                    s2.Color = Color.Green;
+                    area.Axes[2].LineColor = Color.Green;
+                    area.Axes[3].LineColor = Color.Green;
+                    break;
 
-            else if (kolor2.SelectedIndex == 2)
-            {
-                s2.Color = Color.Blue;
-                area.Axes[2].LineColor = Color.Blue;
-                area.Axes[3].LineColor = Color.Blue;
-            }
+                case 2:
+                    s2.Color = Color.Blue;
+                    area.Axes[2].LineColor = Color.Blue;
+                    area.Axes[3].LineColor = Color.Blue;
+                    break;
 
-            else
-            {
-                s2.Color = Color.Yellow;
-                area.Axes[2].LineColor = Color.Yellow;
-                area.Axes[3].LineColor = Color.Yellow;
+                case 3:
+                    s2.Color = Color.Yellow;
+                    area.Axes[2].LineColor = Color.Yellow;
+                    area.Axes[3].LineColor = Color.Yellow;
+                    break;
+
+                default:
+                    break;
+
             }
         }
 

@@ -33,6 +33,7 @@ namespace Analiza_temperatury_Projekt_
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chart));
             this.wykres = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Legenda = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -236,8 +237,10 @@ namespace Analiza_temperatury_Projekt_
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.Legenda);
             this.Controls.Add(this.wykres);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Chart";
-            this.Text = "Chart";
+            this.Text = "Wykres";
             this.Load += new System.EventHandler(this.Chart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.wykres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gruboscS1)).EndInit();

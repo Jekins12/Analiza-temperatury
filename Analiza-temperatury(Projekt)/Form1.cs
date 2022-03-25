@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -8,6 +9,7 @@ namespace Analiza_temperatury_Projekt_
     public partial class Form1 : Form
     {
         private List<double> dane=new List<double> { };
+      
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace Analiza_temperatury_Projekt_
                 {
                     openChart.Enabled = true;
                     zapisz.Enabled = true;
+                    clear.Enabled = true;
                 }
 
                 textBox1.Text = System.IO.File.ReadAllText(openFileDialog1.FileName);
@@ -126,6 +129,22 @@ namespace Analiza_temperatury_Projekt_
             wariancja /= dane.Count();
 
             return wariancja;
+        }
+
+        private void clear_Click(object sender, EventArgs e)
+        {           
+            textBox1.Text = "";
+            max.Text = "";
+            min.Text = "";
+            avg.Text = "";
+            vari.Text = "";
+            zapisz.Enabled = false;            
+            openChart.Enabled = false;
+        }
+
+        private void def_back_CheckedChanged(object sender, EventArgs e)
+        {
+            if (def_back.Checked) BackgroundImage = null;
         }
     }
 }
