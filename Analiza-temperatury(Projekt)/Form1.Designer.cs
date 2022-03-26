@@ -57,7 +57,7 @@ namespace Analiza_temperatury_Projekt_
             this.label10 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.label11 = new System.Windows.Forms.Label();
-            this.def_back = new System.Windows.Forms.RadioButton();
+            this.background = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -332,18 +332,17 @@ namespace Analiza_temperatury_Projekt_
             this.label11.TabIndex = 5;
             this.label11.Text = "Created by: Oleksii Isalov a.k.a Jekins";
             // 
-            // def_back
+            // background
             // 
-            this.def_back.AutoSize = true;
-            this.def_back.BackColor = System.Drawing.Color.Transparent;
-            this.def_back.Location = new System.Drawing.Point(13, 464);
-            this.def_back.Name = "def_back";
-            this.def_back.Size = new System.Drawing.Size(119, 17);
-            this.def_back.TabIndex = 6;
-            this.def_back.TabStop = true;
-            this.def_back.Text = "Default background";
-            this.def_back.UseVisualStyleBackColor = false;
-            this.def_back.CheckedChanged += new System.EventHandler(this.def_back_CheckedChanged);
+            this.background.AutoSize = true;
+            this.background.BackColor = System.Drawing.Color.Transparent;
+            this.background.Location = new System.Drawing.Point(13, 464);
+            this.background.Name = "background";
+            this.background.Size = new System.Drawing.Size(120, 17);
+            this.background.TabIndex = 6;
+            this.background.Text = "Default background";
+            this.background.UseVisualStyleBackColor = false;
+            this.background.CheckedChanged += new System.EventHandler(this.background_CheckedChanged);
             // 
             // Form1
             // 
@@ -353,7 +352,7 @@ namespace Analiza_temperatury_Projekt_
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 486);
-            this.Controls.Add(this.def_back);
+            this.Controls.Add(this.background);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -407,7 +406,7 @@ namespace Analiza_temperatury_Projekt_
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button clear;
-        private System.Windows.Forms.RadioButton def_back;
+        private System.Windows.Forms.CheckBox background;
     }
 }
 

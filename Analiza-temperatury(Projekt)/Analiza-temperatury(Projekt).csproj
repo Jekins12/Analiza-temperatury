@@ -108,6 +108,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -124,6 +125,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Background.bmp" />
+    <None Include="Resources\background.jpg" />
     <Content Include="thermometer_heat_temperature_summer_icon-icons.com_62708.ico" />
   </ItemGroup>
   <ItemGroup>

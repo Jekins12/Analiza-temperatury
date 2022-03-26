@@ -29,7 +29,6 @@ namespace Analiza_temperatury_Projekt_
         }
        
         
-
         public void ReadData(List<double> dane)
         {
             dane.Clear();
@@ -139,11 +138,14 @@ namespace Analiza_temperatury_Projekt_
             vari.Text = "";
             zapisz.Enabled = false;            
             openChart.Enabled = false;
+            clear.Enabled = false;
+            
         }
 
-        private void def_back_CheckedChanged(object sender, EventArgs e)
+        private void background_CheckedChanged(object sender, EventArgs e)
         {
-            if (def_back.Checked) BackgroundImage = null;
+            if (background.Checked) BackgroundImage = null;
+            else BackgroundImage = Properties.Resources.Background;
         }
     }
 }
